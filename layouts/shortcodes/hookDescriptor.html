@@ -15,6 +15,7 @@
 | Type | {{ $.Page.Param "type" }} |
 | Origin | {{ $.Page.Param "origin" }} |
 | Aliases | {{ $.Page.Param "hookAliases" }} |
+| Description | {{ $.Page.Param "description" }} |
 
 {{ if $.Page.Param "array_return" }}
 This hook has an `$array_return` parameter set to `true` (module output will be set by name in an array, [see explaination here](/8/development/components/hook/dispatching-hook)).
