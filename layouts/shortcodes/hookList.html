@@ -5,7 +5,8 @@
             <th>Example</th>
             <th>Name</th>
             <th>Aliases</th>
-            <th style="display:none">Title</th>
+            <th>Title</th>
+            <th>Type</th>
             <th style="display:none">Located in</th>
         </tr>
     </thead>
@@ -34,10 +35,11 @@
                     {{ delimit $aliases ", " }}
                 {{ end }}
             </td>
-            
-            <td style="display:none">{{.Param "hookTitle"}}</td>
+
+            <td>{{.Param "hookTitle"}}</td>
+            <td>{{.Param "type"}}</td>
             <td style="display:none">{{.Param "files"}}</td>
-            
+
         </tr>
         {{ end }}
     </tbody>
