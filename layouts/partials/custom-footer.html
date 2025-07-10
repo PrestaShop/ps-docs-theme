@@ -1,3 +1,21 @@
-{{ if hugo.IsProduction }}
-  {{- partial "analytics.html" . }}
-{{ end }}
+<script>
+  window.axeptioSettings = {
+    userCookiesDomain: "prestashop-project.org",
+    clientId: "6859145f7baee141c249caa3",
+    cookiesVersion: "fr-eu-23-06-2025",
+    googleConsentMode: {
+      default: {
+        analytics_storage: "denied",
+        ad_storage: "denied",
+        ad_user_data: "denied",
+        ad_personalization: "denied",
+        wait_for_update: 500
+      }
+    }
+  };
+  (function (d, s) {
+    var t = d.getElementsByTagName(s)[0], e = d.createElement(s);
+    e.async = true; e.src = "//static.axept.io/sdk.js";
+    t.parentNode.insertBefore(e, t);
+  })(document, "script");
+</script>

@@ -34,8 +34,14 @@
       {{ end }}
     </style>
     {{ partial "custom-header.html" . }}
+    {{ if hugo.IsProduction }}
+    {{- partial "analytics.html" . }}
+    {{ end }}
   </head>
   <body class="" data-url="{{ .RelPermalink }}">
+    {{ if hugo.IsProduction }}
+    {{- partial "analytics_noscript.html" . }}
+    {{ end }}
     {{ partial "menu.html" . }}
       <section id="body">
       <div id="overlay"></div>
