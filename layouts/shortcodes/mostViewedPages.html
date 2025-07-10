@@ -1,14 +1,13 @@
 {{ $currentSection := .Site.Params.versions.current }}
 
-<div class="mostViewedPagesIcon">
-    <img src="images/icons/most-viewed-pages.svg" alt="Most viewed pages icon" />
-</div>
-<h3 class="mostViewedPagesHeading">
-    Most viewed pages
-</h3>
+<div class="mostViewedPagesContainer">    </div>
+    <h3 class="mostViewedPagesHeading">
+        Most viewed pages
+    </h3>
 
-<div class="mostViewedPages">
-    {{ with .Site.GetPage $currentSection }}
-        {{ partial "exploreMostViewedPages.html" . }}
-    {{ end }}
+    <div class="mostViewedPages">
+        {{ with .Site.GetPage $currentSection }}
+            {{ partial "exploreMostViewedPages.html" . }}
+        {{ end }}
+    </div>
 </div>

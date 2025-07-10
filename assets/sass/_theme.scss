@@ -277,6 +277,15 @@ select[multiple='multiple'] {
   }
 }
 
+#body-inner.no-toc {
+  max-width: 100%;
+  margin-right: 0;
+
+  @media (min-width: $contentMaxWidthBreakpoint) {
+    margin-left: 0;
+  }
+}
+
 #body-inner {
   max-width: $contentMaxWidth;
 
@@ -1248,4 +1257,10 @@ footer {
         margin-top: 10px;
         margin-bottom: 10px;
     }
+}
+
+#body .mostViewedPagesIcon {
+  img {
+    margin: 0;
+  }
 }

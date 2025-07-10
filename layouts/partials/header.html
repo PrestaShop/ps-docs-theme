@@ -53,14 +53,14 @@
         <div id="chapter">
         {{ end }}
 
-        {{ if not .IsHome }}
         {{ $toc := (and (not .Params.disableToc) (not .Params.chapter))}}
+        {{ if not .IsHome }}
           {{ if $toc }}
             {{ partial "toc.html" . }}
           {{ end }}
         {{ end }}
 
-        <div id="body-inner">
+        <div id="body-inner" {{ if or (not $toc) .IsHome }}class="no-toc"{{ end }}>
 
           {{define "breadcrumb"}}
             {{$parent := .page.Parent }}
