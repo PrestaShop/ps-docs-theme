@@ -5,7 +5,7 @@
 {{ if and (ne ($.Page.Param "hookTitle") nil) (ne ($.Page.Param "description") nil) }}
 <div class="notices note">
     <strong>{{ $.Page.Param "hookTitle" }}</strong>
-    {{ $.Page.Param "description" }}
+    {{ $.Page.Param "description" | markdownify }}
 </div>
 {{ end }}
 
