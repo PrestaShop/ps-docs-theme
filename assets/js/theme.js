@@ -19,14 +19,6 @@ function showCollapseIcon(icon) {
   icon.classList.add('fa-angle-up');
 }
 
-function toggleIcon(icon) {
-  if (icon.classList.contains('fa-angle-up')) {
-    showExpandIcon(icon);
-  } else {
-    showCollapseIcon(icon);
-  }
-}
-
 menuItems.forEach(e => {
   const icon = e.querySelector('i.fa');
 
@@ -51,7 +43,12 @@ menuItems.forEach(e => {
 
         e.parentElement.classList.toggle('active');
         e.parentElement.classList.toggle('visited');
-        toggleIcon(icon);
+
+        if (e.parentElement.classList.contains('active')) {
+          showCollapseIcon(icon);
+        } else {
+          showExpandIcon(icon);
+        }
       }
     }
   });
