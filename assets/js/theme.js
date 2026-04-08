@@ -1,4 +1,4 @@
-const menuItems = document.querySelectorAll('ul.topics li.isParent > a');
+const menuItems = document.querySelectorAll('#sidebar-menu li.isParent > a');
 const isTouchDevice = ('ontouchstart' in window);
 
 function findParent(current, expected) {
@@ -9,25 +9,41 @@ function findParent(current, expected) {
   return current;
 }
 
+function showExpandIcon(icon) {
+  icon.classList.remove('fa-angle-up');
+  icon.classList.add('fa-angle-down');
+}
+
+function showCollapseIcon(icon) {
+  icon.classList.remove('fa-angle-down');
+  icon.classList.add('fa-angle-up');
+}
+
 function toggleIcon(icon) {
   if (icon.classList.contains('fa-angle-up')) {
-    icon.classList.remove('fa-angle-up');
-    icon.classList.add('fa-angle-down');
+    showExpandIcon(icon);
   } else {
-    icon.classList.add('fa-angle-up');
-    icon.classList.remove('fa-angle-down');
+    showCollapseIcon(icon);
   }
 }
 
 menuItems.forEach(e => {
+  const icon = e.querySelector('i.fa');
+
+  if (e.parentElement.classList.contains('active') || e.parentElement.classList.contains('parent')) {
+    showCollapseIcon(icon);
+  } else {
+    showExpandIcon(icon);
+  }
+
   e.addEventListener('click', event => {
     if (event.target.classList.contains('fa')) {
       event.preventDefault();
-      const icon = e.querySelector('i.fa');
       $(e.parentElement.querySelector(':scope > ul')).slideToggle();
 
       if (e.parentElement.classList.contains('parent') && !e.parentElement.classList.contains('active')) {
         e.parentElement.classList.remove('parent');
+        showExpandIcon(icon);
       } else {
         if (e.parentElement.classList.contains('parent')) {
           e.parentElement.classList.toggle('parent');
@@ -35,9 +51,8 @@ menuItems.forEach(e => {
 
         e.parentElement.classList.toggle('active');
         e.parentElement.classList.toggle('visited');
+        toggleIcon(icon);
       }
-
-      toggleIcon(icon);
     }
   });
 });
